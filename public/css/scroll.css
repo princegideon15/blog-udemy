@@ -1,0 +1,40 @@
+/* Base styles for the scrollable container */
+.scrollable-container {
+    width: 100%; /* Or a fixed width if necessary */
+    height: 800px; /* Fixed height to trigger vertical scrolling */
+    overflow: auto; /* Enable scrolling */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  /* Hide scrollbar for WebKit-based browsers (Chrome, Safari) */
+  .scrollable-container::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar width */
+    height: 0; /* Remove scrollbar height */
+  }
+  
+  /* Show scrollbar on hover */
+  .scrollable-container:hover {
+    scrollbar-width: thin; /* Firefox - thin scrollbar */
+  }
+  
+  /* Show scrollbar on hover for WebKit-based browsers */
+  .scrollable-container:hover::-webkit-scrollbar {
+    width: 8px; /* Set scrollbar width */
+    height: 8px; /* Set scrollbar height */
+  }
+  
+  /* Custom scrollbar track and thumb for WebKit browsers */
+  .scrollable-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of scrollbar track */
+  }
+  
+  .scrollable-container::-webkit-scrollbar-thumb {
+    background: #888; /* Background of scrollbar thumb */
+    border-radius: 4px; /* Rounded scrollbar thumb */
+  }
+  
+  /* Hover effect for scrollbar thumb */
+  .scrollable-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker scrollbar thumb on hover */
+  }
+  
