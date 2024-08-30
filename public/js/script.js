@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => {
           if (response.ok) {
             alert(`Item ${itemId} deleted successfully.`);
-            window.location.href = '/feed'
+            window.location.href = '/'
             // Optionally, remove the item from the DOM
           } else {
             alert('Failed to delete the item.');

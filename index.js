@@ -53,7 +53,7 @@ app.delete('/delete/:id', (req, res) => {
 
 app.post('/submit', (req, res) => {
     blog.push({id: blog.length + 1, title:req.body['title'], content:req.body['content']});
-    res.redirect('/feed');
+    res.redirect('/');
 });
 
 app.post('/update', (req, res) => {
@@ -66,17 +66,11 @@ app.post('/update', (req, res) => {
     if (index !== -1) {
         // Merge existing user object with newData
         blog[index] = { ...blog[index], ...{title:req.body['update_title'], content:req.body['update_content']} };
-        res.redirect('/feed');
+        res.redirect('/');
     } else {
         console.log(`User with id ${itemID} not found.`);
     }
 
-});
-
-app.get('/feed', (req, res) => {
-    res.render(__dirname + '/views/index.ejs',
-        {blog:blog}
-    );
 });
   
 app.listen(port, () => {
