@@ -4,21 +4,25 @@
     <div class="columns mt-5">
         <div class="column">
             <div class="card">
+              <form action="/submit" method="post">
+                <header class="card-header has-background-primary">
+                  <p class="card-header-title is-size-3 has-text-weight-bold has-text-dark">Post a Blog</p>
+                </header>
                 <div class="card-content">
-                    <h1 class="title">Post a Blog</h1>
+                    <!-- <h1 class="title"></h1> -->
                     <div class="field">
-                        <label class="label">Title</label>
-                        <div class="control">
-                          <input class="input" type="text" placeholder="Text input">
-                        </div>
+                      <label class="label">Title</label>
+                      <div class="control">
+                        <input class="input" type="text" name="title" placeholder="Text input" required>
                       </div>
-                      
-                      <div class="field">
-                        <label class="label">Content</label>
-                        <div class="control">
-                          <textarea class="textarea" placeholder="Textarea"></textarea>
-                        </div>
+                    </div>
+                    
+                    <div class="field">
+                      <label class="label">Content</label>
+                      <div class="control">
+                        <textarea class="textarea" name="content" placeholder="Textarea" required></textarea>
                       </div>
+                    </div>
                 </div>
                 <footer class="card-footer">
                     <div class="card-footer-item">
@@ -26,101 +30,86 @@
                     </div>
                     
                     <div class="card-footer-item">
-                        <button class="button is-black is-medium is-fullwidth">Post</button>
+                        <button class="button is-black is-medium is-fullwidth has-text-primary">Post</button>
                     </div>
                 </footer>
-              </div>
+              </form>
+            </div>
         </div>
         <div class="column">
-            <div class="card">
-                <div class="card-content scrollable-container">
-                <h1 class="title">Blog Feed</h1>
-                <h1 class="subtitle">Display all blogs</h1>
-                  <div class="content">
-                    <div class="card">
-                        <header class="card-header">
-                          <p class="card-header-title">Component</p>
-                          <button class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                              <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                          </button>
-                        </header>
-                        <div class="card-content">
-                          <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                            iaculis mauris.
-                            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br />
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <div class="card ">
+              <header class="card-header has-background-warning">
+                <p class="card-header-title is-size-3 has-text-weight-bold has-text-dark">Blog Feed</p>
+              </header>
+              <div class="card-content scrollable-container">
+                <% if(locals.blog && blog.length > 0){ %>
+                  <% for(var i = 0; i < blog.length; i++){ %>
+                    <div class="content">
+                      <div class="card blog">
+                          <header class="card-header">
+                            <p class="card-header-title"><%= blog[i].title %></p>
+                            <button class="card-header-icon" aria-label="more options">
+                              <span class="icon">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                              </span>
+                            </button>
+                          </header>
+                          <div class="card-content">
+                            <div class="content">
+                              <%= blog[i].content %>
+                            </div>
                           </div>
+                          <footer class="card-footer">
+                            <a href="javascript:void(0);" data-id="<%= blog[i].id %>" class="card-footer-item has-text-grey-light edit-blog">Edit</a>
+                            <a href="javascript:void(0);" data-id="<%= blog[i].id %>" class="card-footer-item has-text-warning delete-blog">Delete</a>
+                          </footer>
                         </div>
-                        <footer class="card-footer">
-                          <a href="#" class="card-footer-item">Save</a>
-                          <a href="#" class="card-footer-item">Edit</a>
-                          <a href="#" class="card-footer-item">Delete</a>
-                        </footer>
-                      </div>
-
-                  </div>
-                  <div class="content">
-                    <div class="card">
-                        <header class="card-header">
-                          <p class="card-header-title">Component</p>
-                          <button class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                              <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                          </button>
-                        </header>
-                        <div class="card-content">
-                          <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                            iaculis mauris.
-                            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br />
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                          </div>
-                        </div>
-                        <footer class="card-footer">
-                          <a href="#" class="card-footer-item">Save</a>
-                          <a href="#" class="card-footer-item">Edit</a>
-                          <a href="#" class="card-footer-item">Delete</a>
-                        </footer>
-                      </div>
-
-                  </div>
-                  <div class="content">
-                    <div class="card">
-                        <header class="card-header">
-                          <p class="card-header-title">Component</p>
-                          <button class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                              <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                          </button>
-                        </header>
-                        <div class="card-content">
-                          <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                            iaculis mauris.
-                            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br />
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                          </div>
-                        </div>
-                        <footer class="card-footer">
-                          <a href="#" class="card-footer-item">Save</a>
-                          <a href="#" class="card-footer-item">Edit</a>
-                          <a href="#" class="card-footer-item">Delete</a>
-                        </footer>
-                      </div>
-
-                  </div>
-                </div>
+                    </div>
+                  <% } %>
+                <% } else { %> 
+                  <p>No blogs posted.</p>
+                <% } %>
               </div>
+            </div>
         </div>
       </div>
+
+      <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Edit Blog</p>
+            <button class="delete close-modal" aria-label="close"></button>
+          </header>
+          <form action="/update" method="post">
+            <section class="modal-card-body">
+                <div class="card-content">
+                  <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                      <input class="input" type="hidden" name="id" placeholder="Text input">
+                      <input class="input" type="text" name="update_title" placeholder="Text input" required>
+                    </div>
+                  </div>
+                  
+                  <div class="field">
+                    <label class="label">Content</label>
+                    <div class="control">
+                      <textarea class="textarea" name="update_content" placeholder="Textarea" required></textarea>
+                    </div>
+                  </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+              <div class="buttons">
+                <button type="submit" class="button is-success">Save changes</button>
+                <button class="button close-modal">Cancel</button>
+              </div>
+            </footer>
+        </form>
+        </div>
+      </div>
+
 </section>
 
 
